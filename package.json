@@ -16,6 +16,9 @@
 	"license": "MIT",
 	"version": "1.0.0",
 	"main": "./dist/index.js",
+	"publishConfig": {
+	  "access": "public"
+	}
 	"engines": {
 		"node": ">=8"
 	},
