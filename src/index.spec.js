@@ -23,46 +23,46 @@ import fetch from 'node-fetch';
 const HTTP_PORT = Number.isNaN(Number(process.env.HTTP_PORT)) ? 1337 : process.env.HTTP_PORT;
 
 describe('index', () => {
-	let server;
+  let server;
 
-	afterEach(() => {
-		server.close();
-	});
+  afterEach(() => {
+    server.close();
+  });
 
-	it('Should call next', async () => {
-		const middleware = validateContentType({type: 'application/json'});
-		server = startServer(middleware);
+  it('Should call next', async () => {
+    const middleware = validateContentType({type: 'application/json'});
+    server = startServer(middleware);
 
-		const response = await fetch(`http://localhost:${HTTP_PORT}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({foo: 'bar'})
-		});
+    const response = await fetch(`http://localhost:${HTTP_PORT}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({foo: 'bar'})
+    });
 
-		expect(response.status).to.equal(200);
-	});
+    expect(response.status).to.equal(200);
+  });
 
-	it('Should set status to 415', async () => {
-		const middleware = validateContentType({type: 'text/plain'});
-		server = startServer(middleware);
+  it('Should set status to 415', async () => {
+    const middleware = validateContentType({type: 'text/plain'});
+    server = startServer(middleware);
 
-		const response = await fetch(`http://localhost:${HTTP_PORT}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({foo: 'bar'})
-		});
+    const response = await fetch(`http://localhost:${HTTP_PORT}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({foo: 'bar'})
+    });
 
-		expect(response.status).to.equal(415);
-	});
+    expect(response.status).to.equal(415);
+  });
 });
 
 function startServer(middleware) {
-	const app = express();
-	app.use(middleware);
-	app.all('/', (_, res) => res.send());
-	return app.listen(HTTP_PORT);
+  const app = express();
+  app.use(middleware);
+  app.all('/', (_, res) => res.send());
+  return app.listen(HTTP_PORT);
 }
