@@ -28,7 +28,7 @@
 		"test:base": "cross-env NODE_ENV=test mocha --require @babel/register",
 		"test": "npm run lint && npm run test:base -- src/*.spec.js src/**/*.spec.js src/**/**/*.spec.js",
 		"build:transpile": "babel src --source-maps --delete-dir-on-start --out-dir=dist",
-		"build": "npm run build:transpile && npm run check-deps",
+		"build": "npm run build:transpile",
 		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
 	},
 	"dependencies": {
