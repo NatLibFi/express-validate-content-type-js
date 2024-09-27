@@ -18,9 +18,8 @@
 export default function ({type}) {
   return (req, res, next) => {
     if (req.is(type)) {
-      next();
-    } else {
-      res.sendStatus(415);
+      return next();
     }
+    res.sendStatus(415);
   };
 }

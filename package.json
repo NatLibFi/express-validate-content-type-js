@@ -36,18 +36,19 @@
 		"@babel/register": "^7.24.6"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.2.0",
-		"@babel/core": "^7.2.0",
+		"@babel/cli": "^7.25.6",
+		"@babel/core": "^7.25.2",
 		"@babel/preset-env": "^7.25.4",
 		"@natlibfi/eslint-config-melinda-backend": "^3.0.5",
+		"babel-plugin-istanbul": "^7.0.0",
 		"babel-plugin-rewire": "^1.2.0",
-		"chai": "^4.2.0",
+		"chai": "^4.5.0",
 		"chokidar-cli": "^3.0.0",
 		"cross-env": "^7.0.3",
 		"eslint": "^8.57.1",
-		"express": "^4.16.4",
+		"express": "^4.21.0",
 		"mocha": "^10.7.3",
-		"node-fetch": "^2.3.0"
+		"node-fetch": "^2.7.0"
 	},
 	"eslintConfig": {
 		"extends": "@natlibfi/melinda-backend"

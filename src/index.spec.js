@@ -20,9 +20,11 @@ import validateContentType from './index';
 import express from 'express';
 import fetch from 'node-fetch';
 
+// eslint-disable-next-line no-process-env
 const HTTP_PORT = Number.isNaN(Number(process.env.HTTP_PORT)) ? 1337 : process.env.HTTP_PORT;
 
 describe('index', () => {
+  // eslint-disable-next-line functional/no-let
   let server;
 
   afterEach(() => {
