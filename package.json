@@ -14,7 +14,7 @@
 		"url": "git@github.com:natlibfi/express-validate-content-type-js.git"
 	},
 	"license": "MIT",
-	"version": "2.0.0",
+	"version": "2.0.1-alpha.1",
 	"main": "./dist/index.js",
 	"publishConfig": {
 		"access": "public"
@@ -32,12 +32,12 @@
 		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
 	},
 	"dependencies": {
-		"@babel/register": "^7.24.6"
+		"@babel/register": "^7.25.7"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.25.6",
-		"@babel/core": "^7.25.2",
-		"@babel/preset-env": "^7.25.4",
+		"@babel/cli": "^7.25.7",
+		"@babel/core": "^7.25.8",
+		"@babel/preset-env": "^7.25.8",
 		"@natlibfi/eslint-config-melinda-backend": "^3.0.5",
 		"babel-plugin-istanbul": "^7.0.0",
 		"babel-plugin-rewire": "^1.2.0",
@@ -45,7 +45,7 @@
 		"chokidar-cli": "^3.0.0",
 		"cross-env": "^7.0.3",
 		"eslint": "^8.57.1",
-		"express": "^4.21.0",
+		"express": "^4.21.1",
 		"mocha": "^10.7.3",
 		"node-fetch": "^2.7.0"
 	},
