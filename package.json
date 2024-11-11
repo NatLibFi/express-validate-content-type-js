@@ -32,12 +32,12 @@
 		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
 	},
 	"dependencies": {
-		"@babel/register": "^7.25.7"
+		"@babel/register": "^7.25.9"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.25.7",
-		"@babel/core": "^7.25.8",
-		"@babel/preset-env": "^7.25.8",
+		"@babel/cli": "^7.25.9",
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0",
 		"@natlibfi/eslint-config-melinda-backend": "^3.0.5",
 		"babel-plugin-istanbul": "^7.0.0",
 		"babel-plugin-rewire": "^1.2.0",
@@ -46,7 +46,7 @@
 		"cross-env": "^7.0.3",
 		"eslint": "^8.57.1",
 		"express": "^4.21.1",
-		"mocha": "^10.7.3",
+		"mocha": "^10.8.2",
 		"node-fetch": "^2.7.0"
 	},
 	"eslintConfig": {
