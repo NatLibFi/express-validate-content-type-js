@@ -14,7 +14,7 @@ describe('index', () => {
     server.close();
   });
 
-  it('Should call next', async () => {
+  it('Should call next: request type matches configuration', async () => {
     const middleware = validateContentType({type: 'application/json'});
     server = startServer(middleware);
 
@@ -29,7 +29,18 @@ describe('index', () => {
     expect(response.status).to.equal(200);
   });
 
-  it('Should set status to 415', async () => {
+  it('Should call next: request does not have body', async () => {
+    const middleware = validateContentType({type: 'application/json'});
+    server = startServer(middleware);
+
+    const response = await fetch(`http://localhost:${HTTP_PORT}`, {
+      method: 'GET'
+    });
+
+    expect(response.status).to.equal(200);
+  });
+
+  it('Should set status to 415: request content type does not match configuration', async () => {
     const middleware = validateContentType({type: 'text/plain'});
     server = startServer(middleware);
 
@@ -43,6 +54,21 @@ describe('index', () => {
 
     expect(response.status).to.equal(415);
   });
+
+  it('Should call next: request content type mismatch with configuration does not matter when request does not contain body', async () => {
+    const middleware = validateContentType({type: 'text/plain'});
+    server = startServer(middleware);
+
+    const response = await fetch(`http://localhost:${HTTP_PORT}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    });
+
+    expect(response.status).to.equal(200);
+  });
+
 });
 
 function startServer(middleware) {

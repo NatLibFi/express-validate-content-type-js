@@ -1,6 +1,9 @@
 export default function ({type}) {
   return (req, res, next) => {
-    if (req.is(type)) {
+    const contentTypeIsValid = req.is(type);
+    const requestHasNoBody = contentTypeIsValid === null;
+
+    if (contentTypeIsValid || requestHasNoBody) {
       return next();
     }
     return res.sendStatus(415);
