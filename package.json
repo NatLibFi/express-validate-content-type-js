@@ -5,13 +5,12 @@
 		"name": "The National Library of Finland"
 	},
 	"keywords": [],
-	"homepage": "https://github.com/natlibfi/express-validate-content-type-js",
+	"homepage": "https://www.npmjs.com/package/@natlibfi/express-validate-content-type",
 	"bugs": {
 		"url": "https://github.com/natlibfi/express-validate-content-type-js/issues"
 	},
 	"repository": {
-		"type": "git",
-		"url": "git@github.com:natlibfi/express-validate-content-type-js.git"
+		"url": "https://github.com/NatLibFi/express-validate-content-type-js"
 	},
 	"license": "MIT",
 	"version": "3.0.0-alpha.4",
@@ -35,11 +34,10 @@
 		"test:base": "cross-env NODE_ENV=test mocha --require @babel/register",
 		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
 	},
-	"dependencies": {
-		"esbuild": "^0.25.9"
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"cross-env": "^10.0.0",
+		"esbuild": "^0.25.9",
 		"eslint": "^9.34.0",
 		"express": "^4.21.2"
 	}
