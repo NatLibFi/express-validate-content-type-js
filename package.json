@@ -30,10 +30,6 @@
 		"lint": "eslint --fix src",
 		"test": "npm run lint && npm run test:base"
 	},
-	"old_scripts": {
-		"test:base": "cross-env NODE_ENV=test mocha --require @babel/register",
-		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
-	},
 	"dependencies": {},
 	"devDependencies": {
 		"cross-env": "^10.1.0",
