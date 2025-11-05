@@ -1,16 +1,17 @@
-import {expect} from 'chai';
-import validateContentType from './index';
+import assert from 'node:assert';
+import validateContentType from './index.js';
 import express from 'express';
-import fetch from 'node-fetch';
+import {describe, it, afterEach} from 'node:test';
 
-// eslint-disable-next-line no-process-env
 const HTTP_PORT = Number.isNaN(Number(process.env.HTTP_PORT)) ? 1337 : process.env.HTTP_PORT;
 
-describe('index', () => {
-  // eslint-disable-next-line functional/no-let
-  let server;
 
-  afterEach(() => {
+ 
+
+describe('index', async () => {
+
+  let server;
+  afterEach(async () => {
     server.close();
   });
 
@@ -26,7 +27,7 @@ describe('index', () => {
       body: JSON.stringify({foo: 'bar'})
     });
 
-    expect(response.status).to.equal(200);
+    assert.equal(response.status, 200);
   });
 
   it('Should call next: request does not have body', async () => {
@@ -37,7 +38,7 @@ describe('index', () => {
       method: 'GET'
     });
 
-    expect(response.status).to.equal(200);
+    assert.equal(response.status, 200);
   });
 
   it('Should set status to 415: request content type does not match configuration', async () => {
@@ -52,7 +53,7 @@ describe('index', () => {
       body: JSON.stringify({foo: 'bar'})
     });
 
-    expect(response.status).to.equal(415);
+    assert.equal(response.status, 415);
   });
 
   it('Should call next: request content type mismatch with configuration does not matter when request does not contain body', async () => {
@@ -66,7 +67,7 @@ describe('index', () => {
       }
     });
 
-    expect(response.status).to.equal(200);
+    assert.equal(response.status, 200);
   });
 
 });
