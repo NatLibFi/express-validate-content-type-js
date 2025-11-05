@@ -5,104 +5,35 @@
 		"name": "The National Library of Finland"
 	},
 	"keywords": [],
-	"homepage": "https://github.com/natlibfi/express-validate-content-type-js",
+	"homepage": "https://www.npmjs.com/package/@natlibfi/express-validate-content-type",
 	"bugs": {
 		"url": "https://github.com/natlibfi/express-validate-content-type-js/issues"
 	},
 	"repository": {
-		"type": "git",
-		"url": "git@github.com:natlibfi/express-validate-content-type-js.git"
+		"url": "https://github.com/NatLibFi/express-validate-content-type-js"
 	},
 	"license": "MIT",
-	"version": "2.0.4",
+	"version": "3.0.0-alpha.9",
 	"main": "./dist/index.js",
+	"type": "module",
 	"publishConfig": {
 		"access": "public"
 	},
 	"engines": {
-		"node": ">=18"
+		"node": ">=22"
 	},
 	"scripts": {
-		"prepublishOnly": "npm run build:transpile",
+		"prepare": "npm run build",
+		"build": "esbuild \"src/**/*.js\" --sourcemap --platform=node --outdir=dist",
+		"test:base": "node --test --test-force-exit --experimental-test-coverage --test-reporter=spec './src/**/*.test.js'",
+		"dev:test": "cross-env DEBUG=@natlibfi/* NODE_ENV=test node --watch --test --experimental-test-coverage --test-reporter=spec './src/**/*.test.js'",
 		"lint": "eslint --fix src",
-		"test:base": "cross-env NODE_ENV=test mocha --require @babel/register",
-		"test": "npm run lint && npm run test:base -- src/*.spec.js src/**/*.spec.js src/**/**/*.spec.js",
-		"build:transpile": "babel src --source-maps --delete-dir-on-start --out-dir=dist",
-		"build": "npm run build:transpile",
-		"watch": "cross-env NODE_ENV=test chokidar src -c 'npm test'"
-	},
-	"dependencies": {
-		"@babel/register": "^7.25.9"
+		"test": "npm run lint && npm run test:base"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.26.4",
-		"@babel/core": "^7.26.0",
-		"@babel/preset-env": "^7.26.0",
-		"@natlibfi/eslint-config-melinda-backend": "^3.0.5",
-		"babel-plugin-istanbul": "^7.0.0",
-		"babel-plugin-rewire": "^1.2.0",
-		"chai": "^4.5.0",
-		"chokidar-cli": "^3.0.0",
-		"cross-env": "^7.0.3",
-		"eslint": "^8.57.1",
-		"express": "^4.21.2",
-		"mocha": "^11.0.1",
-		"node-fetch": "^2.7.0"
-	},
-	"eslintConfig": {
-		"extends": "@natlibfi/melinda-backend"
-	},
-	"babel": {
-		"presets": [
-			[
-				"@babel/preset-env",
-				{
-					"targets": "maintained node versions"
-				}
-			]
-		],
-		"env": {
-			"test": {
-				"plugins": [
-					"rewire",
-					"istanbul"
-				]
-			}
-		}
-	},
-	"mocha": {
-		"spec": [
-			"src/*.spec.js",
-			"src/**/*.spec.js"
-		],
-		"require": [
-			"@babel/register"
-		],
-		"inline-diffs": true,
-		"maxDiffSize": 25000,
-		"bail": true,
-		"exit": true
-	},
-	"nodemonConfig": {
-		"exec": "npm run test:dev",
-		"watch": [
-			"src/*",
-			"test-fixtures/*"
-		]
-	},
-	"nyc": {
-		"exclude": [
-			"src/*.spec.js",
-			"src/**/*.spec.js"
-		],
-		"reporter": [
-			"text"
-		],
-		"sourceMap": false,
-		"instrument": false,
-		"lines": 80,
-		"statements": 80,
-		"functions": 80,
-		"branches": 80
+		"cross-env": "^10.1.0",
+		"esbuild": "^0.25.12",
+		"eslint": "^9.39.1",
+		"express": "^5.1.0"
 	}
 }
